@@ -16,6 +16,7 @@ The functions include:
 
 ## 2 Usage
 ### 2.1 Start Program
+Create a python envrionment containing necessary dependencies (`numpy`, `scipy`, `matplotlib` and 'pyQt'), download the two `.py` files and run `strainMatLabelorQt.py` by:
 ```python
 # Dependencies: numpy, scipy, matplotlib, pyQt
 python ./strainMatLabelorQt.py
