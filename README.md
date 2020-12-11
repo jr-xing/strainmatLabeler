@@ -6,6 +6,7 @@ This software enable user to check the strain matrix from .mat file exported by 
 The functions include:
 ### 1.1 Visualize Strain Matrix
 ![vis](./imgs/loaded.png)
+![vis](./imgs/view_3D.png)
 ### 1.2 Generate and Visualize "Full-Resolution" Strain Matrix
 ![vis](./imgs/loaded_full_res.png)
 ### 1.3 Add TOS Labels
