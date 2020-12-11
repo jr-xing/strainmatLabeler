@@ -28,7 +28,7 @@ Drag `.mat` file containing TOS to the left canvas.
 ![vis](./imgs/tos_loaded.png)
 ### 2.4 Check Strain Matrix
 Please feel free to try the options on the right panel
-### 2.5 Annotate New TOS CUrve
+### 2.5 Annotate New TOS Curve
 - Add a control point: mouse middle click at target location
 - Remove a control point: mouse right click at target point
 - Move a control point: mouse left click at target point
