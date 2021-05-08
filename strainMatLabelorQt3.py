@@ -2,7 +2,7 @@
 """
 Created on Wed Jun 17 13:07:03 2020
 
-@author: remus
+@author: Jerry Xing
 http://zetcode.com/gui/pyqt5/
 https://gist.github.com/peace098beat/db8ef7161508e6500ebe # Drag & Drop File
 https://github.com/pyqtgraph/pyqtgraph
