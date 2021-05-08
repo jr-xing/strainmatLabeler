@@ -19,23 +19,39 @@ def loadStrainMat(filename):
     EccDatum, tos = None, None
     
     if 'TransmuralStrainInfo' in datamat.keys():
-        EccDatum = SVDDenoise(np.flip(datamat['TransmuralStrainInfo'].Ecc.mid.T, axis=0))
+        # EccDatum = SVDDenoise(np.flip(datamat['TransmuralStrainInfo'].Ecc.mid.T, axis=0))
+        # EccDatum = np.flip(datamat['TransmuralStrainInfo'].Ecc.mid.T, axis=0)
+        EccDatum = datamat['TransmuralStrainInfo'].Ecc.mid.T
     # if 'strainMatFullResolution' in datamat.keys():
     #     strainMetFullResolution = datamat['strainMatFullResolution']
     # else:
     #     strainMetFullResolution = None
     try:
-        strainMetFullResolution = np.flipud(datamat['StrainInfo'].CCmid)
+        strainMatFullResolution = datamat['StrainInfo'].CCmid
+        # strainMatFullResolution = SVDDenoise(np.flipud(datamat['StrainInfo'].CCmid))
     except:
-        strainMetFullResolution = None
+        strainMatFullResolution = None
         
     
     if 'xs' in datamat.keys():
         tos = datamat['xs'][::-1]
+        tos18_Jerry = None
+        tos126_Jerry = None
     elif 'TOSAnalysis' in datamat.keys():
-        tos = datamat['TOSAnalysis'].TOS[::-1]
+        try:
+            tos = datamat['TOSAnalysis'].TOS[::-1]
+        except:
+            tos = None
+        try:
+            tos18_Jerry = datamat['TOSAnalysis'].TOS18_Jerry[::-1]
+            tos126_Jerry = datamat['TOSAnalysis'].TOSfullRes_Jerry[::-1]
+        except:
+            tos18_Jerry = None
+            tos126_Jerry = None        
     else:
         tos = None
+        tos18_Jerry = None,
+        tos126_Jerry = None
     
     try:
         tos_interp_mid = datamat['TOSAnalysis'].TOSInterploated[datamat['AnalysisInfo'].fv.layerid==3][::-1]
@@ -48,7 +64,9 @@ def loadStrainMat(filename):
     #     tos_interp = datamat['TOSInterploated'][::-1]
     # else:
     #     tos_interp = None
-    return EccDatum, tos, strainMetFullResolution, tos_interp_mid, datamat
+    # return EccDatum, tos, strainMetFullResolution, tos_interp_mid, datamat
+    return {'strainMat': EccDatum, 'TOS': tos, 'TOS18_Jerry': tos18_Jerry, 'TOS126_Jerry': tos126_Jerry,
+            'strainMatFullResolution': strainMatFullResolution, 'TOSInterpolatedMid': tos_interp_mid, 'datamat': datamat}
 
 def saveTOS2Mat(tos:np.ndarray, filename:str):
     sio.savemat(filename, {'xs': tos})
@@ -224,22 +242,36 @@ def spl2patchSA(datamat):
     yspoke = np.concatenate([yspoke, np.nan*np.ones((1, xspoke.shape[1]))])
 
     # find intersections
-    x,y,_,_ = intersections(xspoke.flatten(order='F'),
+    x_eppt,y_eppt,_,_ = intersections(xspoke.flatten(order='F'),
                               yspoke.flatten(order='F'),
                               Ccell[0][:,0], Ccell[0][:,1])
 
     # record points
-    eppts = np.concatenate((x[:,None], y[:,None]), axis=1)
+    eppts = np.concatenate((x_eppt[:,None], y_eppt[:,None]), axis=1)
 
 
     # find intersections
-    x,y,_,_ = intersections(xspoke.flatten(order='F'),
+    x_enpt,y_enpt,_,_ = intersections(xspoke.flatten(order='F'),
                               yspoke.flatten(order='F'),
                               Ccell[1][:,0], Ccell[1][:,1])
 
 
     # record points
-    enpts = np.concatenate((x[:,None], y[:,None]), axis=1)
+    enpts = np.concatenate((x_enpt[:,None], y_enpt[:,None]), axis=1)
+
+    # Correct if wrong
+    # Not sure what happened, but seems eppts sometimes duplicate the first point and (127,2)
+    if enpts.shape[0] < eppts.shape[0]:
+        eppts = eppts[1:, :]
+    # def remove_dupicate(data):
+    #     # data: (N, D) e.g. (126,2)
+    #     unq, count = np.unique(data, axis=0, return_counts=True)
+    #     return unq[count == 1]
+
+    # if enpts.shape[0] != eppts.shape[0]:
+    #     enpts = remove_dupicate(enpts)
+    #     eppts = remove_dupicate(eppts)
+        
 
     # number of lines
     Nline = 6
