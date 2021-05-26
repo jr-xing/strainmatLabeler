@@ -23,25 +23,18 @@ The functions include:
 ### 1.4 Export to .mat File or Image
 ![vis](./imgs/export_mat.png)
 
-## 2 Usage
-### 2.1 Start Program
-Create a python envrionment containing necessary dependencies (`numpy`, `scipy`, `matplotlib` and 'pyQt'), download the two `.py` files and run `strainMatLabelorQt.py` by:
-```python
-# Dependencies: numpy, scipy, matplotlib, pyQt
-python ./strainMatLabelorQt.py
-```
-### 2.2 Load .mat File Containing Strain Matrix
+## 2 Instructions
+### 2.1 Load .mat File Containing Strain Matrix
 Drag `.mat` file exported by DENSEAnalysis to the left canvas.
 ![vis](./imgs/drag_to_load.png)
-### 2.3 Load .mat File Containing TOS Curve
+### 2.2 Load .mat File Containing TOS Curve
 Drag `.mat` file containing TOS to the left canvas.
 ![vis](./imgs/tos_loaded.png)
-### 2.4 Check Strain Matrix
-Please feel free to try the options on the right panel
-### 2.5 Check Strain Curves (NEW)
+### 2.3 Check Strain Matrix
+Please feel free to try the options on the right panel.
+### 2.4 Check Strain Curves (NEW)
 ![vis](./imgs/strain_curve_viewer.png)
 Click `View Strain Curves` to view the mean strain curves in each segment in a new cuvre viewer window. When the strain matrix in the main window is updated, the curves in the curve viewer window will update automatically.
-
 ### 2.5 Annotate New TOS Curve
 - Add a control point: mouse middle click at target location
 - Remove a control point: mouse right click at target point
