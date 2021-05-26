@@ -3,7 +3,7 @@
 ### Ver 1.4 (2021-05-26)
 - Add strain curve viewer
 
-### Usage
+### Installation
 - Create a python environment (`python 3.6+`) with packages `pyQt5`, `matplotlib`, `numpy` and `scipy`
 - Download the lastest release [(v1.4)](https://github.com/jr-xing/strainmatLabeler/files/6549623/strainMatLabelor-v1.4.zip)
 - run `python strainMatLabelorQt-v1.4.py`
@@ -38,6 +38,10 @@ Drag `.mat` file containing TOS to the left canvas.
 ![vis](./imgs/tos_loaded.png)
 ### 2.4 Check Strain Matrix
 Please feel free to try the options on the right panel
+### 2.5 Check Strain Curves (NEW)
+![vis](./imgs/strain_curve_viewer.png)
+Click `View Strain Curves` to view the mean strain curves in each segment in a new cuvre viewer window. When the strain matrix in the main window is updated, the curves in the curve viewer window will update automatically.
+
 ### 2.5 Annotate New TOS Curve
 - Add a control point: mouse middle click at target location
 - Remove a control point: mouse right click at target point
