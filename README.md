@@ -1,12 +1,14 @@
 # strainmatLabeler
 ## Updates
+### Ver 1.4.1 (2021-05-28)
+- Bug fix
 ### Ver 1.4 (2021-05-26)
 - Add strain curve viewer
 
 ### Installation
 - Create a python environment (`python 3.6+`) with packages `pyQt5`, `matplotlib`, `numpy` and `scipy`
-- Download the lastest release [(v1.4)](https://github.com/jr-xing/strainmatLabeler/files/6549623/strainMatLabelor-v1.4.zip)
-- run `python strainMatLabelorQt-v1.4.py`
+- Download the lastest release [(v1.4.1)](https://github.com/jr-xing/strainmatLabeler/files/6549623/strainMatLabelor-v1.4.zip)
+- run `python strainMatLabelorQt.py`
 
 ## 1 Introduction and Functions
 This software enable user to check the strain matrix from .mat file exported by [DENSEAnalysis](https://github.com/denseanalysis/denseanalysis) software and add new TOS curves.
