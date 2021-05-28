@@ -7,7 +7,7 @@
 
 ### Installation
 - Create a python environment (`python 3.6+`) with packages `pyQt5`, `matplotlib`, `numpy` and `scipy`
-- Download the lastest release [(v1.4.1)](https://github.com/jr-xing/strainmatLabeler/files/6549623/strainMatLabelor-v1.4.zip)
+- Download the lastest release [(v1.4.1)](https://github.com/jr-xing/strainmatLabeler/releases/download/1.4.1/strainMatLabelor-1.4.1.zip)
 - run `python strainMatLabelorQt.py`
 
 ## 1 Introduction and Functions
